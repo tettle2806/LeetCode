@@ -1,3 +1,6 @@
+from typing import List
+
+
 class Solution:
     def myAtoi(self, s: str) -> int:
 
@@ -29,7 +32,29 @@ class Solution:
 
 
 
+"""
+Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the two sorted arrays.
+
+The overall run time complexity should be O(log (m+n)).
+"""
+
+class Solution2:
+    def findMedianSortedArrays(self, nums1:List[int], nums2:List[int]) -> float:
+        for num in nums2:
+            nums1.append(num)
+
+        sorted_nums1 = sorted(nums1)
+        if len(sorted_nums1) % 2 != 0:
+            index = int((len(sorted_nums1) - 1)  / 2)
+            print(sorted_nums1[index])
+            return sorted_nums1[index]
+        else:
+            index = int(len(sorted_nums1) / 2)
+            print((sorted_nums1[index] + sorted_nums1[index - 1]) / 2)
+            return (sorted_nums1[index] + sorted_nums1[index - 1]) / 2
 
 
 
-a = Solution().myAtoi(" -042")
+
+
+a = Solution2().findMedianSortedArrays(nums1=[1,3], nums2=[2])
