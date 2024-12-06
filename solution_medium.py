@@ -24,5 +24,35 @@ class Solution:
             return 0
 
 
+"""
+Maximum Number of Integers to Choose From a Range I
+"""
 
-b = Solution().reverse(1534236469)
+
+class Solution:
+    def maxCount(self, banned: List[int], n: int, maxSum: int) -> int:
+        count = 0  # Initialize the count of numbers that aren't banned and whose sum is within max_sum
+
+        current_sum = 0
+
+        banned_set = set(banned)  # Convert the banned list to a set for faster lookups
+
+        # Iterate through the numbers from 1 to n
+
+        for i in range(1, n + 1):
+
+            # Check if adding the current number would exceed the maximum allowed sum
+
+            if current_sum + i > maxSum:
+                break  # If it would, break out of the loop early
+
+            # Check if the current number is not banned
+
+            if i not in banned_set:
+                count += 1  # Increment the count of valid numbers
+
+                current_sum += i  # Add the current number to the sum
+
+        # Return the final count of valid numbers
+
+        return count
